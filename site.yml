@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+
+  tasks:
+      - name: Download dotfiles
+        git: repo=https://github.com/izumimatsuo/dotfiles dest=~/dotfiles
+        register: result
+
+      - name: Setup dotfiles
+        command: ./install.sh chdir=~/dotfiles
+        when: result.changed
