@@ -3,6 +3,9 @@
 - hosts: all
 
   tasks:
+      - name: Initial setup
+        command: timedatectl set-timezone Asia/Tokyo
+        become: yes
       - file: path=~/.vim/autoload state=directory
       - git_config: name=user.name value=izumimatsuo scope=global
       - git_config: name=user.email value=gurux2daddy@gmail.com scope=global
